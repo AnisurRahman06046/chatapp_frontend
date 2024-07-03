@@ -1,3 +1,4 @@
+import MessageInput from "./MessageInput";
 import Messages from "./Messages";
 
 function MessageContainer() {
@@ -12,6 +13,7 @@ function MessageContainer() {
         {/* messages component */}
         <Messages/>
         {/* message input */}
+        <MessageInput/>
       </>
     </div>
   );
