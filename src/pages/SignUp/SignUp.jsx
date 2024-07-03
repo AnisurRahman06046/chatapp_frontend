@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useSignup from "../../hooks/useSignup";
 
 function SignUp() {
   const [inputs, setInputs] = useState({
@@ -10,11 +11,12 @@ function SignUp() {
     gender: "",
     hashedPassword: "",
   });
-
-  const handleSubmit=(e)=>{
-    e.preventDefault()
-    console.log(inputs)
-  }
+  const { loading, signup } = useSignup();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(inputs, "form data");
+    await signup(inputs);
+  };
   return (
     <div className="flex flex-col  items-center justify-center min-w-96 mx-auto">
       <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
