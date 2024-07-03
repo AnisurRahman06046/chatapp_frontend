@@ -1,3 +1,4 @@
+import Converations from "./Converations"
 import SearchInput from "./SearchInput"
 
 
@@ -8,6 +9,7 @@ function SideBar() {
         <SearchInput/>
         <div className="divider px-3"></div>
         {/* Conversations component */}
+        <Converations/>
         {/* logout component */}
     </div>
   )

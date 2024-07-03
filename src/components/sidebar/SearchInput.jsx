@@ -1,3 +1,5 @@
+import { IoSearchSharp } from "react-icons/io5";
+
 function SearchInput() {
   return (
     <form className="flex items-center gap-2">
@@ -8,7 +10,7 @@ function SearchInput() {
       />
 
       <button type="submit" className="btn btn-circle bg-sky-500 text-white">
-        Icon
+        <IoSearchSharp className="w-6 h-6 outline-none"></IoSearchSharp>
       </button>
     </form>
   );
