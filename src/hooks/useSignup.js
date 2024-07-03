@@ -1,9 +1,10 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const useSignup = () => {
   const [loading, setLoading] = useState(false);
-
+  const navigate = useNavigate();
   const signup = async (payload) => {
     const success = handleInputErrors(payload);
     if (!success) return;
@@ -16,6 +17,12 @@ const useSignup = () => {
       });
       const data = await res.json();
       console.log(data);
+      if (data.statusCode === 201) {
+        toast.success("Registration is successful");
+        setTimeout(() => {
+          navigate("/login");
+        }, 2000);
+      }
     } catch (error) {
       toast.error(error.message);
     } finally {

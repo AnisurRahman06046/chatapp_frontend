@@ -1,6 +1,18 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import useLogin from "../../hooks/useLogin";
 
 function Login() {
+  const [inputs, setInputs] = useState({
+    email: "",
+    hashedPassword: "",
+  });
+  const { login } = useLogin();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // console.log(inputs)
+    await login(inputs);
+  };
   return (
     <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
       <div className=" w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
@@ -10,15 +22,17 @@ function Login() {
         </h1>
 
         {/* form section */}
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <div>
             <label className="label p-2">
-              <span className="text-base label-text">Username</span>
+              <span className="text-base label-text">Email</span>
             </label>
             <input
               type="text"
-              placeholder="Enter username"
+              placeholder="example@gmail.com"
               className="w-full input input-bordered h-10"
+              value={inputs.email}
+              onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
             />
           </div>
           <div>
@@ -29,19 +43,22 @@ function Login() {
               type="password"
               placeholder="Enter you password"
               className="w-full input input-bordered h-10"
+              value={inputs.hashedPassword}
+              onChange={(e) =>
+                setInputs({ ...inputs, hashedPassword: e.target.value })
+              }
             />
           </div>
           <Link
-          to="/signup"
-          className="text-sm hover:underline hover:text-blue-600 mt-2 inline-block "
-        >
-          {"Don't"} have an account?
-        </Link>
-        <div>
+            to="/signup"
+            className="text-sm hover:underline hover:text-blue-600 mt-2 inline-block "
+          >
+            {"Don't"} have an account?
+          </Link>
+          <div>
             <button className="btn btn-block btn-sm mt-2">Login</button>
-        </div>
+          </div>
         </form>
-
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ function SignUp() {
     gender: "",
     hashedPassword: "",
   });
-  const { loading, signup } = useSignup();
+  const {  signup } = useSignup();
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(inputs, "form data");
