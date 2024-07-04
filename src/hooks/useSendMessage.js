@@ -24,9 +24,9 @@ const useSendMessage = () => {
       );
       const data = await res.json();
     //   console.log(data);
-      if (data.statusCode === 200) {
-        setMessages([...messages, data.message]);
-      }
+
+      setMessages([...messages, data.data]);
+     
     } catch (error) {
       console.log(error.message);
     } finally {

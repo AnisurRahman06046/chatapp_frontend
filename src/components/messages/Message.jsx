@@ -1,10 +1,11 @@
 import { useAuthContext } from "../../context/AuthContext";
 import PropTypes from "prop-types";
 import useConversation from "../../store/useConversation";
+import { extractTime } from "../../utils/extractTime";
 
 function Message({ message }) {
-  console.log(message);
   const { authUser } = useAuthContext();
+
   const { selectedConversation } = useConversation();
   const fromMe = message.senderId === authUser._id;
   const chatClass = fromMe ? "chat-end" : "chat-start";
@@ -13,6 +14,7 @@ function Message({ message }) {
     : selectedConversation?.profilePic;
 
   const bgColor = fromMe ? "bg-blue-500" : "";
+  const formatedTime = extractTime(message.createdAt);
   return (
     <div className={`chat ${chatClass}`}>
       <div className="chat-image avatar">
@@ -24,7 +26,7 @@ function Message({ message }) {
         {message.message}
       </div>
       <div className="chat-footer opacity-50 text-xs flex gap-1 items-center">
-        12:42
+        {formatedTime}
       </div>
     </div>
   );

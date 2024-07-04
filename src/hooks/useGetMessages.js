@@ -20,8 +20,8 @@ const useGetMessages = () => {
           }
         );
         const data = await res.json();
-        console.log(data);
-        console.log(data.data.messages);
+        // console.log(data);
+        // console.log(data.data.messages);
         if (data.statusCode === 200) {
           setMessages(data.data.messages);
         }
@@ -31,9 +31,11 @@ const useGetMessages = () => {
         setLoading(false);
       }
     };
-    if (selectedConversation?._id) getMessages();
+    if (selectedConversation?._id) {
+      getMessages();
+    }
   }, [selectedConversation?._id, setMessages]);
-  return { loading, messages:messages || [] };
+  return { loading, messages };
 };
 
 export default useGetMessages;

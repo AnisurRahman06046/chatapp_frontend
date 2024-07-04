@@ -5,7 +5,6 @@ const useGetConversations = () => {
   // Loading state
   const [loading, setLoading] = useState(false);
   const [conversations, setConversations] = useState([]);
-  const [error, setError] = useState(null);
 
   const token = localStorage.getItem("access_token");
 
@@ -26,10 +25,12 @@ const useGetConversations = () => {
         }
 
         const data = await res.json();
-        console.log(data);
-        setConversations(data.data);
+        // console.log(data);
+        if (data.statusCode === 200) {
+          setConversations(data.data);
+        }
       } catch (error) {
-        setError(error);
+        console.log(error.message);
       } finally {
         setLoading(false);
       }
@@ -38,7 +39,7 @@ const useGetConversations = () => {
     getConversations();
   }, [token]);
 
-  return { loading, conversations, error };
+  return { loading, conversations };
 };
 
 export default useGetConversations;
