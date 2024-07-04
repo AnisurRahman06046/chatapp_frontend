@@ -11,7 +11,7 @@ function SignUp() {
     gender: "",
     hashedPassword: "",
   });
-  const {  signup } = useSignup();
+  const { loading, signup } = useSignup();
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(inputs, "form data");
@@ -115,8 +115,15 @@ function SignUp() {
             Already have an account?
           </Link>
           <div>
-            <button className="btn btn-block btn-sm mt-2 hover:bg-blue-800">
-              Sign Up
+            <button
+              className="btn btn-block btn-sm mt-2 hover:bg-blue-800"
+              disabled={loading}
+            >
+              {loading ? (
+                <span className="loading loading-spinner"></span>
+              ) : (
+                "Sign Up"
+              )}
             </button>
           </div>
         </form>

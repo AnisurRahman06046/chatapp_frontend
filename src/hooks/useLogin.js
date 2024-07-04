@@ -9,7 +9,7 @@ const useLogin = () => {
   const { setAuthUser } = useAuthContext();
 
   const login = async (payload) => {
-    console.log(payload, "login payload");
+    // console.log(payload, "login payload");
     const success = handleInputErrors(payload);
     if (!success) return;
     setLoading(true);
