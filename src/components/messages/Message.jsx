@@ -15,6 +15,7 @@ function Message({ message }) {
 
   const bgColor = fromMe ? "bg-blue-500" : "";
   const formatedTime = extractTime(message.createdAt);
+  const shouldShake = message.shouldShake ? "shake" : "";
   return (
     <div className={`chat ${chatClass}`}>
       <div className="chat-image avatar">
@@ -22,7 +23,7 @@ function Message({ message }) {
           <img src={profilePic} alt="chat buble" />
         </div>
       </div>
-      <div className={`chat-bubble text-white  ${bgColor}`}>
+      <div className={`chat-bubble text-white  ${bgColor} ${shouldShake}`}>
         {message.message}
       </div>
       <div className="chat-footer opacity-50 text-xs flex gap-1 items-center">
@@ -37,6 +38,7 @@ Message.propTypes = {
     senderId: PropTypes.string.isRequired,
     message: PropTypes.string.isRequired,
     createdAt: PropTypes.string.isRequired,
+    shouldShake: PropTypes.bool,
   }).isRequired,
 };
 export default Message;
