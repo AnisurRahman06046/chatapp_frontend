@@ -24,7 +24,7 @@ const useLogin = () => {
       if (data.statusCode===201) {
         toast.success("Login successful");
         // console.log(data.access_token)
-        setAuthUser(data.user);
+        setAuthUser(data.data.user);
         localStorage.setItem("user", JSON.stringify(data.data.user));
         localStorage.setItem("access_token", data.data.access_token);
         setTimeout(() => {
