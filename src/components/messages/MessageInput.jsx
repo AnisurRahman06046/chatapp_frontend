@@ -5,6 +5,7 @@ import useSendMessage from "../../hooks/useSendMessage";
 function MessageInput() {
   const [message, setMessage] = useState("");
   const { sendMessage, loading } = useSendMessage();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(message)
@@ -12,6 +13,7 @@ function MessageInput() {
     await sendMessage(message);
     setMessage("");
   };
+
   return (
     <form onSubmit={handleSubmit} className="px-4 my-3">
       <div className="w-full relative">
