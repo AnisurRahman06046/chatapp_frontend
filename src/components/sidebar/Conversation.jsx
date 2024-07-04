@@ -32,6 +32,7 @@ function Conversation({ conversation, emoji, lastIdx }) {
 }
 Conversation.propTypes = {
   conversation: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
     profilePic: PropTypes.string.isRequired,
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
