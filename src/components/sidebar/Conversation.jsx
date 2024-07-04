@@ -1,8 +1,16 @@
 import PropTypes from "prop-types";
+import useConversation from "../../store/useConversation";
 function Conversation({ conversation, emoji, lastIdx }) {
+  const { selectedConversation, setSelectedConversation } = useConversation();
+
+  const isSelected = selectedConversation?._id === conversation._id;
   return (
     <>
-      <div className="flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer">
+      <div
+        className={`flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer
+        ${isSelected ? "bg-sky-500" : ""}`}
+        onClick={() => setSelectedConversation(conversation)}
+      >
         {/* avatar section */}
         <div className="avatar online">
           <div className="w-12 rounded-full">
