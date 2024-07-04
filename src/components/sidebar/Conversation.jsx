@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 function Conversation({ conversation, emoji, lastIdx }) {
   return (
     <>
@@ -17,9 +18,17 @@ function Conversation({ conversation, emoji, lastIdx }) {
           </div>
         </div>
       </div>
-      <div className="divider my-0 py-0 h-1"></div>
+      {!lastIdx && <div className="divider my-0 py-0 h-1"></div>}
     </>
   );
 }
-
+Conversation.propTypes = {
+  conversation: PropTypes.shape({
+    profilePic: PropTypes.string.isRequired,
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+  }).isRequired,
+  emoji: PropTypes.string.isRequired,
+  lastIdx: PropTypes.bool.isRequired,
+};
 export default Conversation;
