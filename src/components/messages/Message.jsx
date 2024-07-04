@@ -36,6 +36,7 @@ Message.propTypes = {
   message: PropTypes.shape({
     senderId: PropTypes.string.isRequired,
     message: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired,
   }).isRequired,
 };
 export default Message;
