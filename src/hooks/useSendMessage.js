@@ -12,7 +12,7 @@ const useSendMessage = () => {
     };
     try {
       const res = await fetch(
-        `http://localhost:3000/messages/sendMessage/${selectedConversation._id}`,
+        `${import.meta.env.VITE_SERVER_URL}/messages/sendMessage/${selectedConversation._id}`,
         {
           method: "POST",
           headers: {
@@ -28,7 +28,7 @@ const useSendMessage = () => {
       setMessages([...messages, data.data]);
      
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
     } finally {
       setLoading(false);
     }

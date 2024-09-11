@@ -10,7 +10,7 @@ const useGetMessages = () => {
       setLoading(true);
       try {
         const res = await fetch(
-          `http://localhost:3000/messages/messages/${selectedConversation._id}`,
+          `${import.meta.env.VITE_SERVER_URL}/messages/messages/${selectedConversation._id}`,
           {
             method: "GET",
             headers: {

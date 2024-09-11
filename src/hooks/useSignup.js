@@ -10,13 +10,13 @@ const useSignup = () => {
     if (!success) return;
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:3000/auth/sign-up", {
+      const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/auth/sign-up`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
       if (data.statusCode === 201) {
         toast.success("Registration is successful");
         setTimeout(() => {

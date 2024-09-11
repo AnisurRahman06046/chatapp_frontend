@@ -14,13 +14,13 @@ const useLogin = () => {
     if (!success) return;
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:3000/auth/sign-in", {
+      const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/auth/sign-in`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
       const data = await res.json();
-      console.log(data, " from login");
+      // console.log(data, " from login");
       if (data.statusCode===201) {
         toast.success("Login successful");
         // console.log(data.access_token)

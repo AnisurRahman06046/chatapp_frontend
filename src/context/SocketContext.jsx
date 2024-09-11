@@ -13,10 +13,12 @@ export const SocketProvider = ({ children }) => {
   const { authUser } = useAuthContext();
   useEffect(() => {
     if (authUser) {
-      const socket = io(`http://localhost:3000`, {
+      const socket = io(`${import.meta.env.VITE_SERVER_URL}`, {
         query: {
           userId: authUser._id,
         },
+        transports: ["websocket"],
+        secure: true,
       });
       setSocket(socket);
       socket.on("getOnlineUsers", (users) => {
@@ -39,5 +41,5 @@ export const SocketProvider = ({ children }) => {
 };
 
 SocketProvider.propTypes = {
-    children: PropTypes.node.isRequired,
-  };
+  children: PropTypes.node.isRequired,
+};

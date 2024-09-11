@@ -14,7 +14,7 @@ function SignUp() {
   const { loading, signup } = useSignup();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(inputs, "form data");
+    // console.log(inputs, "form data");
     await signup(inputs);
   };
   return (

@@ -5,7 +5,7 @@ import Conversation from "./Conversation";
 function Converations() {
   // const token = localStorage.getItem("access_token");
   const { loading, conversations } = useGetConversations();
-  console.log(conversations, "from conversations");
+  // console.log(conversations, "from conversations");
   return (
     <div className="py-2 flex flex-col overflow-auto">
       {conversations.map((conversation, idx) => (
